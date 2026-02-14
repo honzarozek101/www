@@ -1,21 +1,22 @@
-module.exports = {
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
   satellite: {
     ids: {
-      production: "tnsgl-4qaaa-aaaal-asw7q-cai"  // Tvůj satellite ID z Juno Console
+      production: "tnsgl-4qaaa-aaaal-asw7q-cai"  // Tvůj satellite ID
     },
-    source: "build",  // Nahraje z build/ (index.html + JS/CSS); změň na "." pro kořen, pokud statický
-    predeploy: ["npm run build"],  // Spustí build (pokud máš package.json)
-    ignore: ["**/*.map", ".git/", "node_modules/"]  // Ignoruj nepotřebné pro úsporu cyklů
+    source: "build",  // Nahraje z build/ složky (index.html + JS/CSS)
+    predeploy: ["npm run build"]  // Spustí build
   },
   automation: {
     github: {
       repositories: [
         {
-          owner: "honzarozek101",  // Tvůj GitHub username
-          name: "www",  // Název repozitáře
-          refs: ["main"]  // Branch pro auto-deploy
+          owner: "honzarozek101",  // Tvůj username
+          name: "www",  // Název repo
+          refs: ["main"]
         }
       ]
     }
   }
-};
+});
