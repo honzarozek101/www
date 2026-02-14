@@ -5,20 +5,21 @@ on:
     branches: [main]
 
 jobs:
-  deploy:  # Změna z "build" na "deploy" pro konzistenci
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repo
-        uses: actions/checkout@v4
-        
+      - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 18  # Uprav na tvou verzi z package.json
-      
-      - name: Deploy to Juno
-        uses: junobuild/juno-action@main
+          node-version: 24  # Z docs
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build  # Vytvoří build/
+
+      - uses: junobuild/juno-action@v1  # @v1 místo @main – opraví bug
         with:
-          args: hosting deploy  # Klíčové pro static files – použije config
-        env:
-          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+          token: ${{ secrets.JUNO_TOKEN }}  # With: token místo env
