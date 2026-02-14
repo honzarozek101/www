@@ -5,21 +5,25 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out the repo
+        uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 24  # Z docs
+          node-version: 24  # Z Juno docs
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm ci  # Stáhne z package.json
 
       - name: Build
         run: npm run build  # Vytvoří build/
 
-      - uses: junobuild/juno-action@v1  # @v1 místo @main – opraví bug
+      - name: Deploy to Juno
+        uses: junobuild/juno-action@main  # @main – opraví resolve error
         with:
-          token: ${{ secrets.JUNO_TOKEN }}  # With: token místo env
+          args: deploy  # Použije config pro hosting z build/
+        env:
+          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}  # Tvůj token
