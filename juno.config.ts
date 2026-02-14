@@ -5,6 +5,6 @@ export default defineConfig({
     ids: {
       production: "tnsgl-4qaaa-aaaal-asw7q-cai"  // Tvůj satellite ID z Juno Console
     },
-    source: "build"  // Nahraje soubory z build/ složky (index.html + JS/CSS)
+    source: "build"  // Nahraje soubory z build/ složky
   }
-});
+
