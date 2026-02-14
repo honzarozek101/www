@@ -1,4 +1,4 @@
-ame: Deploy to Juno
+name: Deploy to Juno
 
 on:
   push:
