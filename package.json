@@ -2,9 +2,9 @@
   "name": "www-icp",
   "version": "1.0.0",
   "scripts": {
-    "build": "vite build"  // Nahraď svým příkazem (vytvoří build/)
+    "build": "vite build"  // Nahraď svým příkazem pro vytvoření build/
   },
   "devDependencies": {
-    "vite": "^5.0.0"  // Přidej své závislosti
+    "vite": "^5.0.0"  // Přidej své závislosti (např. react-scripts)
   }
 }
