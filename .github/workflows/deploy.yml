@@ -1,1 +1,25 @@
+name: Deploy to Juno
 
+on:
+  push:
+    branches: [main]  # Spustí se při pushi do main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18  # Uprav verzi, pokud máš jiný Node
+
+     
+
+      - name: Deploy to Juno
+        uses: junobuild/juno-action@main
+        with:
+          args: deploy
+        env:
+          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}  # Použije tvůj secret
