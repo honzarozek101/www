@@ -1,11 +1,11 @@
-name: Deploy to Juno
+ame: Deploy to Juno
 
 on:
   push:
-    branches: [main]  # Spustí se při pushi do main
+    branches: [main]
 
 jobs:
-  build:
+  deploy:  # Změna z "build" na "deploy" pro konzistenci
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -13,13 +13,12 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 18  # Uprav verzi, pokud máš jiný Node
-     
+          node-version: 18  # Uprav na tvou verzi z package.json
 
-
+      
       - name: Deploy to Juno
         uses: junobuild/juno-action@main
         with:
-          args: deploy
+          args: hosting deploy  # Klíčové pro static files – použije config
         env:
-          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}  # Použije tvůj secret
+          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
