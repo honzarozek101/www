@@ -1,0 +1,10 @@
+{
+  "name": "www-icp",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "vite build"  // Nahraď svým příkazem (vytvoří build/)
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"  // Přidej své závislosti
+  }
+}
