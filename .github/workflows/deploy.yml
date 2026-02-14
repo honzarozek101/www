@@ -14,7 +14,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18  # Uprav na tvou verzi z package.json
-
       
       - name: Deploy to Juno
         uses: junobuild/juno-action@main
