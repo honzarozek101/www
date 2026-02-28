@@ -14,6 +14,8 @@ jobs:
       - name: List files for debug
         run: ls -la build/  # Ukáže soubory v build/ (pro logs)
 
+
+
       - name: Deploy to Juno
         uses: junobuild/juno-action@main
         with:
